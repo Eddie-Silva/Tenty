@@ -24,10 +24,10 @@ app.post("/campgrounds", function(req, res){
 
    //get data from form and add to campgrunds
 
-   let newName = req.body.ed; // the data of the field with the 'name' name
+   let newName = req.body.name; // the data of the field with the 'name' name
    let newImage = req.body.image; // the data of the field with the 'name' image
    let newCampground = {name: newName, image: newImage}; //makes a new {} with the propertie = to the var newName and newImage
-   campgrounds.push(newCampground); // adds newCampground {} to campgrounds array
+   campgroundsArray.push(newCampground); // adds newCampground {} to campgrounds array
 
    
    res.redirect("/campgrounds");  //redirect back to campground get page
