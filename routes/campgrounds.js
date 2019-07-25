@@ -69,6 +69,59 @@ router.get("/:id", function(req, res){
    
 });
 
+//EDIT Campground route
+router.get("/:id/edit", checkCampgroundOwnership, function(req, res){
+   //check if user is logged in
+   Campground.findById(req.params.id, function(err, foundCampground){
+      res.render("campgrounds/edit", {campground:foundCampground}); 
+   });
+});
+
+//UPDATE campground route
+router.put("/:id", checkCampgroundOwnership, function(req, res){
+   //find and update
+   Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(err, updatedCampground){
+      if(err){
+         res.redirect("/campgrounds");
+      } else {
+         res.redirect("/campgrounds/" + req.params.id);
+      }
+   })
+   //redirect
+});
+
+//DESTROY campground route
+router.delete("/:id",checkCampgroundOwnership, function(req, res){
+   Campground.findByIdAndRemove(req.params.id, function(err){
+      if(err){
+         res.redirect("/campgrounds")
+      } else {
+         res.redirect("/campgrounds")
+      }
+   });
+});
+
+//MIDDLEWARE
+//check if user that is loged in is the owner
+function checkCampgroundOwnership(req, res, next){
+   if(req.isAuthenticated()){
+      Campground.findById(req.params.id, function(err, foundCampground){
+         if(err){
+            res.redirect("back");
+         } else {
+            //does user own campground
+            if(foundCampground.author.id.equals(req.user._id)){ //'equals' is a built in method in mongoose
+              next()
+            } else {
+               res.redirect("back");
+            }   
+         }
+      });
+   } else {
+      res.redirect("back");
+   }
+}
+
 //loged in checked
 function isLoggedIn(req, res, next){
    if(req.isAuthenticated()){
