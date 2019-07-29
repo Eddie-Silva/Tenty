@@ -3,6 +3,7 @@ let app = express();
 let bodyParser = require("body-parser");
 let mongoose = require("mongoose");
 let passport = require("passport");
+let flash = require("connect-flash");
 let LocalStrategy = require("passport-local");
 let methodOveride = require("method-override");
 let Campground = require("./models/campground");
@@ -18,11 +19,25 @@ let indexRoutes = require("./routes/index");
 
 
 //Configuration
-mongoose.connect("mongodb://localhost/yelp_camp", {useNewUrlParser: true}); //connects to mongoose and create database
+
+//connects to mongoose and create database
+mongoose.connect("mongodb+srv://dbUser:illhero@cluster0-bjikw.mongodb.net/test?retryWrites=true&w=majority", {
+   useNewUrlParser: true,
+   useCreateIndex: true
+}).then(() => {
+   console.log("connected to DB");
+   
+}).catch(err => {
+   console.log("ERROR:", err.message);
+   
+});
+
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs"); 
 app.use(express.static(__dirname + "/public")); //for CSS liniking
 app.use(methodOveride("_method")); //for UPDATE methods
+app.use(flash());
 
 //seedDB();
 
@@ -42,6 +57,8 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(function(req, res, next){ //called on every route
    res.locals.currentUser = req.user; //'currentUser' available to every templete
+   res.locals.error = req.flash("error"); 
+   res.locals.success = req.flash("success");
    next();
 });
 

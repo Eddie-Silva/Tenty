@@ -5,6 +5,7 @@ let User = require("../models/user");
 
 
 
+
 //ROOT ROUTE
 
 router.get("/", function(req, res){
@@ -22,17 +23,18 @@ router.post("/register", function(req, res){
   var newUser = new User({username: req.body.username});
   User.register(newUser, req.body.password, function(err, user){
      if(err){
-        console.log(err);
-        return res.render("register");
+      req.flash("error", err.message);
+      return res.redirect("/register");
      }
      passport.authenticate("local")(req, res, function(){
+        req.flash("success", "Welcome to LiftCamp " + user.username);
         res.redirect("/campgrounds")
      })
   })
 
 });
 
-//show login formm
+//show login form
 router.get("/login", function(req, res){
    res.render("login");
 })
@@ -48,17 +50,9 @@ router.post("/login", passport.authenticate("local", {
 //LOGOUT ROUTE
 router.get("/logout", function(req, res){
    req.logOut();//method comes from packages
+   req.flash("success", "Logged out!")
    res.redirect("/campgrounds");
 })
 
-
-////////////////
-//loged in checked middleware
-function isLoggedIn(req, res, next){
-   if(req.isAuthenticated()){
-      return next();
-   };
-   res.redirect("/login");
-}
 
 module.exports = router;
