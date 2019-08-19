@@ -21,6 +21,7 @@ let indexRoutes = require("./routes/index");
 //Configuration
 
 //connects to mongoose and create database
+//mongoose.connect("mongodb://localhost/campout");
 mongoose.connect("mongodb+srv://dbUser:illhero@cluster0-bjikw.mongodb.net/test?retryWrites=true&w=majority", {
    useNewUrlParser: true,
    useCreateIndex: true
@@ -69,7 +70,7 @@ app.use("/campgrounds/:id/comments", commentRoutes);
 
 
 
-app.listen(8080, function(){
+app.listen(3000, function(){
    console.log("In Action");
    
 });
