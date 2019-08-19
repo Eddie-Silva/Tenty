@@ -1,5 +1,9 @@
+
 {
-  "name": "Campout",
+  "engines": {
+    "node": "10.16.0"
+  },
+  "name": "campout",
   "version": "1.0.0",
   "description": "Campout app",
   "main": "app.js",
