@@ -8,15 +8,15 @@ var middlewareObj = {};
 middlewareObj.checkCampgroundOwnership = function(req, res, next){
    if(req.isAuthenticated()){
       Campground.findById(req.params.id, function(err, foundCampground){
-         if(err){
+         if(err || !foundCampground){
             req.flash("error", "Campground not found");
             res.redirect("back");
          } else {
-            //does user own campground
+            //does user own campground?
             if(foundCampground.author.id.equals(req.user._id)){ //'equals' is a built in method in mongoose
               next()
             } else {
-               req.flash("error", "You do not have permission to do that");
+               req.flash("error", "You do not have permission.");
                res.redirect("back");
             }   
          }
@@ -32,10 +32,9 @@ middlewareObj.checkCampgroundOwnership = function(req, res, next){
 middlewareObj.checkCommentOwnership = function(req, res, next){
    if(req.isAuthenticated()){
       Comment.findById(req.params.comment_id, function(err, foundComment){
-         
-         if(err){
-            req.flash("error", "Campground not found")
-            res.redirect("back");
+         if(err || !foundComment){
+            req.flash("error", "No comment found")
+            res.redirect("/campgrounds");
          } else {
             //does user own comment
             if(foundComment.author.id.equals(req.user._id)){ //'equals' is a built in method in mongoose
