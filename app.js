@@ -11,6 +11,8 @@ let Comment = require("./models/comment");
 let seedDB = require("./seeds");
 let User = require("./models/user");
 
+require("./database");
+
 //requiring routes
 let commentRoutes = require("./routes/comments");
 let campgroundRoutes = require("./routes/campgrounds");
@@ -22,7 +24,7 @@ let indexRoutes = require("./routes/index");
 
 //connects to mongoose and create database
 //mongoose.connect("mongodb://localhost/campout");
-mongoose.connect("mongodb+srv://dbUser:illhero@cluster0-bjikw.mongodb.net/test?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://newUser:illhero@cluster0-bjikw.mongodb.net/test?retryWrites=true&w=majority", {
    useNewUrlParser: true,
    useCreateIndex: true
 }).then(() => {
@@ -71,7 +73,7 @@ app.use("/campgrounds/:id/comments", commentRoutes);
 
 
 const port = process.env.PORT || 3000;
-const ip = process.env.IP || "127.0.0.1";
+const ip = process.env.IP || "0.0.0.0/0";
 app.listen(port,function(){
     console.log("Server has started .... at port "+ port+" ip: "+ip);
 });
