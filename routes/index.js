@@ -29,8 +29,8 @@ router.post("/register", function(req, res){
      passport.authenticate("local")(req, res, function(){
         req.flash("success", "Welcome to LiftCamp " + user.username);
         res.redirect("/campgrounds")
-     })
-  })
+     });
+  });
 
 });
 
@@ -43,16 +43,16 @@ router.get("/login", function(req, res){
 router.post("/login", passport.authenticate("local", {
    successRedirect:"/campgrounds",
    failureRedirect: "/login"
-}),function(req, res){
+}), function(req, res){
   
 });
 
 //LOGOUT ROUTE
 router.get("/logout", function(req, res){
    req.logOut();//method comes from packages
-   req.flash("success", "Logged out!")
+   req.flash("success", "Logged out!");
    res.redirect("/campgrounds");
-})
+});
 
 
 module.exports = router;

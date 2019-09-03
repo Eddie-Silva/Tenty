@@ -1,16 +1,14 @@
 {
-  "engines": {
-    "node": "10.16.0"
-  },
+  
   "name": "campout",
   "version": "1.0.0",
   "description": "Campout app",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
-  "author": "",
+  "author": "E silva",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
