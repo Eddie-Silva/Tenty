@@ -4,25 +4,20 @@
 <!--CAMP DETAIL SECTION-->
 <div class="container">
    <div class="row">
-      <div class="col-md-3">
-         <p class="lead">YelpCamp</p>
-         <div class="list-group">
-            <li class="list-group-item">Info1</li>
-            <li class="list-group-item">Info1</li>
-            <li class="list-group-item">Info1</li>
-         </div>
-      </div>
 
-
-      <div class="col-md-9">
+      <!--DETAILS-->
+      <div class="col-md-8">
          <div class="thumbnail">
             <img class="img-resposnive" src="<%= campground.image%>">
             <div class="caption-full">
                <h4 class="pull-right">$<%= campground.price %>/night</h4>
                <h4><a><%=campground.name%></a></h4>
-               <p><%=campground.description%></p>
                <p>Submited by: <%=campground.author.username%></p>
-
+               
+                  <div class="light-gray text-scroll">
+                     <p><%=campground.description%></p>  
+                  </div>
+               
                <% if(currentUser && campground.author.id.equals(currentUser._id)){%>
                <a class="btn btn-warning" href="/campgrounds/<%=campground._id%>/edit">Edit</a>
                <form class="delete-form" action="/campgrounds/<%=campground._id%>?_method=DELETE" method="POST">
@@ -31,55 +26,58 @@
                <%}%>
             </div>
          </div>
+      </div>   
 
+      <!--space div-->
+      <div class="col-md-1"></div>
 
+      <div class="col-md-3">
+         <p class="lead title">Comments</p>
+            
          <!--COMMENT SECTION-->
-
-         
          <div class="well">
-
+   
             <!--Add new comment-->
             <div class="text-right">
                <a class="btn btn-success" href="/campgrounds/<%=campground._id%>/comments/new">Add new Comment</a>
             </div>
             <hr>
-            
-            <!--Posted Comments-->
-            
-            <% campground.comments.forEach(function(comment){%>
-               <div class="row">
-                  <div class="col-md-12"> 
-                     <h4><%= comment.author.username %></h4>
-                     <span class="pull-right">10 days ago</span>
-                     <p>
-                        <%= comment.text %>
-                     </p>
-
-                  <!--Edit/Delete Comment-->
-                  <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
-                     
-                     <a class="btn btn-xs btn-warning" href="/campgrounds/<%=campground._id%>/comments/<%=comment._id %>/edit">
-                        Edit
-                     </a>
-                     <form action="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE"
-                           method="POST">
-
-                        <button class="btn btn-xs btn-danger pull-right"
-                                value="Delete" >
-                                Delete
-                        </button>
-                     
-                        <% console.log(comment.author); %>
                         
-                     </form>
-                   <% } %>
-                   <hr>
+            <!--Posted Comments-->
+            <div class="text-scroll">        
+               <% campground.comments.forEach(function(comment){%>
+                  <div class="row">
+                     <div class="col-md-12"> 
+                        <h4><%= comment.author.username %></h4>
+                        
+                        <p>
+                           <%= comment.text %>
+                        </p>
+               
+                        <!--Edit/Delete Comment-->
+                        <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                           <a class="btn btn-xs btn-warning"
+                              href="/campgrounds/<%=campground._id%>/comments/<%=comment._id %>/edit">
+                              Edit
+                           </a>
+                           <form action="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE"
+                                 method="POST">
+               
+                              <button class="btn btn-xs btn-danger pull-right"
+                                       value="Delete" >
+                                       Delete
+                              </button>    
+                           </form>
+                        <% } %>
+                        <hr>  
+                     </div>
                   </div>
-               </div>
-            <% }); %>   
+               <% }); %>   
+            </div> 
 
          </div>
       </div>
+
    </div>
 </div>
 

@@ -8,7 +8,7 @@ let LocalStrategy = require("passport-local");
 let methodOveride = require("method-override");
 let Campground = require("./models/campground");
 let Comment = require("./models/comment");
-let seedDB = require("./seeds");
+
 let User = require("./models/user");
 
 //require("./database.js")
@@ -75,7 +75,7 @@ app.use("/campgrounds/:id/comments", commentRoutes);
 const port = process.env.PORT || 3000;
 const ip = process.env.IP || "127.0.0.1";
 app.listen(port,function(){
-    console.log("Server has started .... at port "+ port+" ip: "+ip);
+    console.log("Server has started")
 });
 
 // app.listen(3000, function(){

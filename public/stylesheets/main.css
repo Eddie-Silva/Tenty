@@ -16,3 +16,21 @@
 .delete-form {
    display: inline-block;
 }
+
+div.text-scroll {
+  height: 450px;
+  overflow: auto;
+}
+
+.light-gray {
+   background-color: rgb(212, 212, 212);
+   border-radius: 3px;
+   padding: 2%;
+    margin-top: 6%;
+    margin-bottom: 3%;
+}
+
+.user-inputs {
+   width: 30%;
+   margin: 25px auto;
+}

@@ -26,7 +26,7 @@ router.post("/", middleware.isLoggedIn, function(req,res){
       if(err){
          req.flash("error", "Sorry comment was not created")
          console.log(err);
-         res.redirect("/campgroudns");
+         res.redirect("/campgrounds");
       } else {
          //create new comment
          Comment.create(req.body.comment, function(err, comment){
