@@ -6,12 +6,8 @@ let passport = require("passport");
 let flash = require("connect-flash");
 let LocalStrategy = require("passport-local");
 let methodOveride = require("method-override");
-let Campground = require("./models/campground");
-let Comment = require("./models/comment");
 
 let User = require("./models/user");
-
-//require("./database.js")
 
 //requiring routes
 let commentRoutes = require("./routes/comments");
@@ -23,7 +19,6 @@ let indexRoutes = require("./routes/index");
 //Configuration
 
 //connects to mongoose and create database
-//mongoose.connect("mongodb://localhost/campout");
 mongoose.connect("mongodb+srv://dbUser:illhero@cluster0-bjikw.mongodb.net/test?retryWrites=true&w=majority", {
    useNewUrlParser: true,
    useCreateIndex: true
@@ -77,8 +72,3 @@ const ip = process.env.IP || "127.0.0.1";
 app.listen(port,function(){
     console.log("Server has started")
 });
-
-// app.listen(3000, function(){
-//    console.log("In Action");
-   
-// });

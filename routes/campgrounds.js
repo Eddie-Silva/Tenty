@@ -28,7 +28,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
    let newPrice = req.body.price
    let newImage = req.body.image; // the data of the field with the name atribute 'image'
    let newDescription = req.body.description;
-    //console.log(req.user); --view the user data
+    
     let author = {
       id: req.user._id,
       username: req.user.username
