@@ -27,7 +27,7 @@ router.post("/register", function(req, res){
       return res.redirect("/register");
      }
      passport.authenticate("local")(req, res, function(){
-        req.flash("success", "Welcome to LiftCamp " + user.username);
+        req.flash("success", "Welcome to Campout " + user.username);
         res.redirect("/campgrounds")
      });
   });
@@ -44,7 +44,7 @@ router.post("/login", passport.authenticate("local", {
    successRedirect:"/campgrounds",
    failureRedirect: "/login"
 }), function(req, res){
-  
+   req.flash("success", "Logged in.");
 });
 
 //LOGOUT ROUTE

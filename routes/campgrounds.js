@@ -11,7 +11,6 @@ router.get("/", function(req, res){
       if(err){
          console.log(err);
       } else {
-         console.log("displaying all campgrounds");
          res.render("campgrounds/index", {campgrounds: allCampgrounds}) // takes the data from CampgroundDB and passes it as 'campgrounds' object to 'campgrounds.ejs  
       }
    
@@ -39,8 +38,6 @@ router.post("/", middleware.isLoggedIn, function(req, res){
       if(err){
          console.log(err);
       } else {
-         console.log(newlyCreated);//view new created campground
-         
         res.redirect("/campgrounds");  //redirect back to campground get page 
       }
    });

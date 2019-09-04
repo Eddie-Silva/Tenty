@@ -23,7 +23,6 @@ mongoose.connect("mongodb+srv://dbUser:illhero@cluster0-bjikw.mongodb.net/test?r
    useNewUrlParser: true,
    useCreateIndex: true
 }).then(() => {
-   console.log("connected to DB");
    
 }).catch(err => {
    console.log("ERROR:", err.message);
@@ -70,5 +69,5 @@ app.use("/campgrounds/:id/comments", commentRoutes);
 const port = process.env.PORT || 3000;
 const ip = process.env.IP || "127.0.0.1";
 app.listen(port,function(){
-    console.log("Server has started")
+    
 });

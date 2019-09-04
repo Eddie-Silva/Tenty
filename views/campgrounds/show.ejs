@@ -6,22 +6,29 @@
    <div class="row">
 
       <!--DETAILS-->
-      <div class="col-md-8">
+      <div class="col-md-7">
          <div class="thumbnail">
             <img class="img-resposnive" src="<%= campground.image%>">
             <div class="caption-full">
-               <h4 class="pull-right">$<%= campground.price %>/night</h4>
-               <h4><a><%=campground.name%></a></h4>
-               <p>Submited by: <%=campground.author.username%></p>
+
+               <div class="light-bg shadowy fira-thin">
+                  <h4 class="pull-right">$<%= campground.price %>/night</h4>
+
+                  <div class="rub-thick-font">
+                     <h4><%=campground.name%></h4>
+                  </div>
+                   
+                   <p>Submited by: <span class="rub-thick-font"><%=campground.author.username%></span></p>
+               </div>
                
-                  <div class="light-gray text-scroll">
+                  <div class="light-bg shadowy text-scroll fira-thin text-pad">
                      <p><%=campground.description%></p>  
                   </div>
                
                <% if(currentUser && campground.author.id.equals(currentUser._id)){%>
-               <a class="btn btn-warning" href="/campgrounds/<%=campground._id%>/edit">Edit</a>
+               <a class="btn edit fira-thin" href="/campgrounds/<%=campground._id%>/edit">Edit</a>
                <form class="delete-form" action="/campgrounds/<%=campground._id%>?_method=DELETE" method="POST">
-                  <button class="btn btn-danger">Delete</button>
+                  <button class="btn danger fira-thin">Delete</button>
                </form>
                <%}%>
             </div>
@@ -31,43 +38,50 @@
       <!--space div-->
       <div class="col-md-1"></div>
 
-      <div class="col-md-3">
-         <p class="lead title">Comments</p>
+      <div class="col-md-4">
+         <p class="section-title text-center">Comments</p>
             
          <!--COMMENT SECTION-->
-         <div class="well">
+         <div class="light-bg shadowy">
    
             <!--Add new comment-->
-            <div class="text-right">
-               <a class="btn btn-success" href="/campgrounds/<%=campground._id%>/comments/new">Add new Comment</a>
+            <div class="text-center">
+               <a class="btn more-info shadowy fira-thin" href="/campgrounds/<%=campground._id%>/comments/new">Add Comment</a>
             </div>
             <hr>
                         
             <!--Posted Comments-->
-            <div class="text-scroll">        
+            <div class="comment-scroll fira-thin">        
                <% campground.comments.forEach(function(comment){%>
                   <div class="row">
                      <div class="col-md-12"> 
-                        <h4><%= comment.author.username %></h4>
+                        <div class="rub-thick-font text-pad">
+                           <h4><%= comment.author.username %></h4>
+                        </div>
+                        <div class="text-pad ">
+                           <p>
+                              <%= comment.text %>
+                           </p>
+                             
+                        </div>
+                          
                         
-                        <p>
-                           <%= comment.text %>
-                        </p>
-               
+                                  
+                           
                         <!--Edit/Delete Comment-->
                         <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
-                           <a class="btn btn-xs btn-warning"
+                           <a class="btn btn-xs edit fira-thin"
                               href="/campgrounds/<%=campground._id%>/comments/<%=comment._id %>/edit">
                               Edit
                            </a>
                            <form action="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE"
                                  method="POST">
                
-                              <button class="btn btn-xs btn-danger pull-right"
-                                       value="Delete" >
+                              <button class="btn btn-xs danger fira-thin"
+                                       value="Delete">
                                        Delete
                               </button>    
-                           </form>
+                           </form> 
                         <% } %>
                         <hr>  
                      </div>

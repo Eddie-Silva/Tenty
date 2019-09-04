@@ -3,11 +3,12 @@
 <div class="container"> <!--Start of bootstrap -->
 
    <header class="jumbotron">
-      <div class="container">
-         <h1>Campgrounds page</h1>
-         <p>Campgrounds from all over the world.</p>
+      <div class="container rub-thick-font">
+         <h1>Campout</h1>
+         <p>Living the outdoors.<br> Sharing it with others.</p>
+         
          <p>
-            <a class="btn btn-primary btn-large" href="/campgrounds/new">Add new campground</a>
+            <a class="btn light-bg btn-large shadowy" href="/campgrounds/new">Share</a>
          </p>  
       </div>
    </header>
@@ -16,15 +17,15 @@
 
       <% campgrounds.forEach(function(campground){ %>
          <div class="col-md-3 col-sm-6">
-               <div class="thumbnail">
+               <div class="thumbnail more-info">
                   <img src="<%= campground.image %>">
-                  <div class="caption">
+                  <div class="caption rub-thick-font">
                      <h4>
                         <%= campground.name %>
                      </h4>
                   </div>   
                   <p>
-                  <a href="/campgrounds/<%=campground._id%>" class="btn btn-primary">More Info</a>
+                  <a href="/campgrounds/<%=campground._id%>" class="btn light-bg shadowy fira-thin">More Info</a>
                   </p>  
                </div>    
          </div>
