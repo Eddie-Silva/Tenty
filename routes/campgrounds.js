@@ -11,7 +11,6 @@ router.get("/", function(req, res){
       if(err){
          console.log(err);
       } else {
-         console.log("displaying all campgrounds");
          res.render("campgrounds/index", {campgrounds: allCampgrounds}) // takes the data from CampgroundDB and passes it as 'campgrounds' object to 'campgrounds.ejs  
       }
    
@@ -28,7 +27,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
    let newPrice = req.body.price
    let newImage = req.body.image; // the data of the field with the name atribute 'image'
    let newDescription = req.body.description;
-    //console.log(req.user); --view the user data
+    
     let author = {
       id: req.user._id,
       username: req.user.username
@@ -39,8 +38,6 @@ router.post("/", middleware.isLoggedIn, function(req, res){
       if(err){
          console.log(err);
       } else {
-         console.log(newlyCreated);//view new created campground
-         
         res.redirect("/campgrounds");  //redirect back to campground get page 
       }
    });

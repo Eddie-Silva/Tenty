@@ -1,36 +1,102 @@
 
 
-.thumbnail img {
-   width: 100%;
-
-}
-
-.thumbnail {
-   padding:0;
-}
-
-.thumbnail .caption-full {
-   padding: 9px;
-}
 
 .delete-form {
    display: inline-block;
 }
 
-div.text-scroll {
-  height: 450px;
+.text-scroll {
+  height: auto;
   overflow: auto;
 }
 
+.comment-scroll {
+   
+   max-height: 40rem;
+   overflow: scroll;
+ }
+
 .light-gray {
-   background-color: rgb(212, 212, 212);
+   background-color: #E7E5DF;
    border-radius: 3px;
    padding: 2%;
     margin-top: 6%;
     margin-bottom: 3%;
 }
 
-.user-inputs {
-   width: 30%;
-   margin: 25px auto;
+.jumbotron {
+   color: #31D0C4;
+   background-color: #46237A;
+
+}
+
+body.main-app {
+   background-image: url("/assets/tent_patern-01.png");
+  
+}
+
+.rub-thick-font {
+   font-family: 'Rubik', sans-serif;
+   font-weight: 500;
+   
+}
+
+.fira-thin {
+   font-family: 'Fira Sans', sans-serif;
+   font-weight: 200;
+}
+
+
+
+.navbar{
+   background-color: #E7E5DF;
+}
+
+.light-bg {
+   background-color: #F6F8FF;
+   color: #4F5D75;
+   border-radius: 5px;
+   padding: 1%;
+   margin-top:2%;
+   margin-bottom: 2%;
+}
+
+.shadowy{
+   box-shadow: 0 4px 4px 1px rgba(0, 0, 0, 0.2);  
+}
+
+.more-info {
+   background-color: #71E5B3;
+   color: #270722;
+   margin-top: 3%;
+}
+
+.danger {
+   background-color: #F24333;
+   color:#FCFCFC;
+   margin: 2%;
+   display: block;
+}
+
+.edit {
+   background-color: #F6AE2D;
+   color: #FCFCFC;
+   max-width: 30%;
+   
+}
+
+.section-title {
+   font-family: 'Rubik', sans-serif;
+   font-weight: bold;
+   font-size: 3em;
+   color: #46237A;
+   margin-top: 3%;
+}
+
+#logout {
+   color: #F6AE2D;
+}
+
+.card-bg {
+   background-color: #E6E6E6;
 }
