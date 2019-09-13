@@ -10,10 +10,11 @@ You can view camping stories others have posted but in order to post your own st
 
 ## Built With
 
--Node
--Express
--MongoDB
--Bootstrap 4
+- Node
+- Express
+- MongoDB
+- Passport
+- Bootstrap 4
 
 ### Authors
 
